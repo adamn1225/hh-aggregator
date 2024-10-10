@@ -2,10 +2,22 @@ import Head from 'next/head'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import TodoList from '@/components/TodoList'
+import { useEffect } from 'react'
 
 export default function Home() {
   const session = useSession()
   const supabase = useSupabaseClient()
+
+  useEffect(() => {
+    const refreshSession = async () => {
+      const { data, error } = await supabase.auth.refreshSession()
+      if (error) console.log('Error refreshing session:', error.message)
+    }
+
+    if (session) {
+      refreshSession()
+    }
+  }, [session, supabase])
 
   return (
     <>
@@ -44,7 +56,11 @@ export default function Home() {
               className="btn-black w-full mt-12"
               onClick={async () => {
                 const { error } = await supabase.auth.signOut()
-                if (error) console.log('Error logging out:', error.message)
+                if (error) {
+                  console.log('Error logging out:', error.message)
+                } else {
+                  window.location.reload() // Reload the page to clear session state
+                }
               }}
             >
               Logout
