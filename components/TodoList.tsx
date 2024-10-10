@@ -69,7 +69,8 @@ export default function TodoList({ session }: { session: Session }) {
 
   return (
     <div className="w-full">
-      <h1 className="mb-12">Todo List.</h1>
+      <h1 className="mb-12 text-2xl">Your Reminders</h1>
+      <h3>Set up tasks, mark them complete or delete. Set up email reminders - you'll get an email once a task is created and the reminder email on the date & time selected.</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
