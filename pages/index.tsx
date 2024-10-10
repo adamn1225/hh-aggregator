@@ -56,6 +56,10 @@ export default function Home() {
                 className="btn-black w-full mt-12"
                 onClick={async () => {
                   try {
+                    // Log the current session and tokens
+                    const session = supabase.auth.session();
+                    console.log('Current session:', session);
+
                     const { error } = await supabase.auth.signOut();
                     if (error) {
                       console.error('Error logging out:', error.message);
