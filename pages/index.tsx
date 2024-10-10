@@ -1,23 +1,23 @@
-import Head from 'next/head'
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
-import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
-import TodoList from '@/components/TodoList'
-import { useEffect } from 'react'
+import Head from 'next/head';
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
+import TodoList from '@/components/TodoList';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const session = useSession()
-  const supabase = useSupabaseClient()
+  const session = useSession();
+  const supabase = useSupabaseClient();
 
   useEffect(() => {
     const refreshSession = async () => {
-      const { data, error } = await supabase.auth.refreshSession()
-      if (error) console.log('Error refreshing session:', error.message)
-    }
+      const { data, error } = await supabase.auth.refreshSession();
+      if (error) console.log('Error refreshing session:', error.message);
+    };
 
     if (session) {
-      refreshSession()
+      refreshSession();
     }
-  }, [session, supabase])
+  }, [session, supabase]);
 
   const retryWithBackoff = async (fn: () => Promise<any>, retries = 3, delay = 1000): Promise<any> => {
     for (let i = 0; i < retries; i++) {
@@ -32,6 +32,21 @@ export default function Home() {
           throw err;
         }
       }
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: process.env.NODE_ENV === 'development'
+          ? 'http://localhost:3000/auth/callback'
+          : 'https://ssta-tasks.vercel.app/auth/callback', // Ensure this matches the URI in Google API Console
+      },
+    });
+
+    if (error) {
+      console.error('Error signing in with Google:', error.message);
     }
   };
 
@@ -58,47 +73,50 @@ export default function Home() {
                     appearance={{ theme: ThemeSupa }}
                     theme="dark"
                   />
+                  <button onClick={signInWithGoogle} className="btn-black w-full mt-4">
+                    Sign in with Google
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         ) : (
-            <div
-              className="w-full h-full flex flex-col justify-center items-center p-4"
-              style={{ minWidth: 250, maxWidth: 600, margin: 'auto' }}
-            >
-              <TodoList session={session} />
-              <button
-                className="btn-black w-full mt-12"
-                onClick={async () => {
-                  try {
-                    // Log the current session and tokens
-                    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-                    if (sessionError) {
-                      throw new Error(sessionError.message);
-                    }
-                    console.log('Current session:', session);
-
-                    const { error } = await supabase.auth.signOut();
-                    if (error) {
-                      console.error('Error logging out:', error.message);
-                      alert('Failed to log out. Please try again.');
-                      // Optionally, redirect to login page
-                      window.location.href = '/login';
-                    } else {
-                      window.location.reload(); // Reload the page to clear session state
-                    }
-                  } catch (err) {
-                    console.error('Unexpected error during logout:', err);
-                    alert('An unexpected error occurred. Please try again.');
-              // Optionally, redirect to login page
-                    window.location.href = '/login';
+          <div
+            className="w-full h-full flex flex-col justify-center items-center p-4"
+            style={{ minWidth: 250, maxWidth: 600, margin: 'auto' }}
+          >
+            <TodoList session={session} />
+            <button
+              className="btn-black w-full mt-12"
+              onClick={async () => {
+                try {
+                  // Log the current session and tokens
+                  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+                  if (sessionError) {
+                    throw new Error(sessionError.message);
                   }
-                }}
-              >
-                Logout
-              </button>
-            </div>
+                  console.log('Current session:', session);
+
+                  const { error } = await supabase.auth.signOut();
+                  if (error) {
+                    console.error('Error logging out:', error.message);
+                    alert('Failed to log out. Please try again.');
+                    // Optionally, redirect to login page
+                    window.location.href = '/login';
+                  } else {
+                    window.location.reload(); // Reload the page to clear session state
+                  }
+                } catch (err) {
+                  console.error('Unexpected error during logout:', err);
+                  alert('An unexpected error occurred. Please try again.');
+                  // Optionally, redirect to login page
+                  window.location.href = '/login';
+                }
+              }}
+            >
+              Logout
+            </button>
+          </div>
         )}
       </div>
     </>
