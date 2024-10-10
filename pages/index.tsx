@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export default function Home() {
   const session = useSession();
   const supabase = useSupabaseClient();
-  const [error, setError] = useState<string | null>(null); // Update the type to accept both string and null
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const refreshSession = async () => {
@@ -26,7 +26,7 @@ export default function Home() {
       options: {
         redirectTo: process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000/auth/callback'
-          : 'https://ssta-tasks.vercel.app/auth/callback', // Ensure this matches the URI in Google API Console
+          : 'https://supabase-nextjs-todo-list-adamn1225s-projects.vercel.app/auth/callback',
       },
     });
 
@@ -108,7 +108,6 @@ export default function Home() {
               className="btn-black w-full mt-12"
               onClick={async () => {
                 try {
-                  // Log the current session and tokens
                   const { data: { session }, error: sessionError } = await supabase.auth.getSession();
                   if (sessionError) {
                     throw new Error(sessionError.message);
@@ -119,15 +118,13 @@ export default function Home() {
                   if (error) {
                     console.error('Error logging out:', error.message);
                     alert('Failed to log out. Please try again.');
-                    // Optionally, redirect to login page
                     window.location.href = '/login';
                   } else {
-                    window.location.reload(); // Reload the page to clear session state
+                    window.location.reload();
                   }
                 } catch (err) {
                   console.error('Unexpected error during logout:', err);
                   alert('An unexpected error occurred. Please try again.');
-                  // Optionally, redirect to login page
                   window.location.href = '/login';
                 }
               }}
