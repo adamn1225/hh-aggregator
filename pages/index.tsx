@@ -19,6 +19,22 @@ export default function Home() {
     }
   }, [session, supabase])
 
+  const retryWithBackoff = async (fn: () => Promise<any>, retries = 3, delay = 1000): Promise<any> => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        return await fn();
+      } catch (err) {
+        if (i < retries - 1) {
+          console.warn(`Retrying in ${delay}ms...`);
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2; // Exponential backoff
+        } else {
+          throw err;
+        }
+      }
+    }
+  };
+
   return (
     <>
       <Head>
@@ -57,7 +73,10 @@ export default function Home() {
                 onClick={async () => {
                   try {
                     // Log the current session and tokens
-                    const session = supabase.auth.session();
+                    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+                    if (sessionError) {
+                      throw new Error(sessionError.message);
+                    }
                     console.log('Current session:', session);
 
                     const { error } = await supabase.auth.signOut();
@@ -72,7 +91,7 @@ export default function Home() {
                   } catch (err) {
                     console.error('Unexpected error during logout:', err);
                     alert('An unexpected error occurred. Please try again.');
-                    // Optionally, redirect to login page
+              // Optionally, redirect to login page
                     window.location.href = '/login';
                   }
                 }}
