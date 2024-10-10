@@ -42,6 +42,7 @@ export default function Home() {
         redirectTo: process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000/auth/callback'
           : 'https://ssta-tasks.vercel.app/auth/callback', // Ensure this matches the URI in Google API Console
+        scopes: 'email profile', // Add the necessary scopes
       },
     });
 
