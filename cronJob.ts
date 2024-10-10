@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
-const cron = require('node-cron');
-const { getTasksDueNow } = require('./lib/database');
+import nodemailer from 'nodemailer';
+import cron from 'node-cron';
+import { getTasksDueNow } from './lib/database';
 
 // Define the Task interface
 interface Task {
@@ -31,7 +31,7 @@ const createMailOptions = (to: string, task: string) => ({
 
 // Cron job to check for tasks due now every minute
 cron.schedule('* * * * *', async () => {
-    console.log('Checking for due tasks...')
+    console.log('Checking for due tasks...');
     const tasks: Task[] = await getTasksDueNow();
 
     tasks.forEach(async (task: Task) => {
