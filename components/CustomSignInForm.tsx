@@ -40,7 +40,7 @@ export default function CustomSignInForm() {
             </button>
             <div className="mt-4 text-center">
                 <a href="#" className="text-sm">Forgot your password?</a>
-                <p className="text-sm mt-2">Don't have an account? <a href="#" className="text-blue-500">Sign up</a></p>
+                <p className="text-sm mt-2">Don&apos;t have an account? <a href="#" className="text-blue-500">Sign up</a></p>
             </div>
         </div>
     )
