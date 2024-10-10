@@ -35,30 +35,6 @@ export default function Home() {
     }
   };
 
-  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError(null);
-
-    const email = (e.target as HTMLFormElement).email.value;
-    const password = (e.target as HTMLFormElement).password.value;
-
-    if (!email || !password) {
-      setError('Email and password are required');
-      return;
-    }
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    if (error) {
-      setError(error.message);
-    } else {
-      alert('Sign-up successful! Please check your email to confirm your account.');
-    }
-  };
-
   return (
     <>
       <Head>
@@ -82,18 +58,6 @@ export default function Home() {
                     appearance={{ theme: ThemeSupa }}
                     theme="dark"
                   />
-                  <form onSubmit={handleSignUp}>
-                    <div>
-                      <label>Email:</label>
-                      <input type="email" name="email" required />
-                    </div>
-                    <div>
-                      <label>Password:</label>
-                      <input type="password" name="password" required />
-                    </div>
-                    {error && <div style={{ color: 'red' }}>{error}</div>}
-                    <button type="submit">Sign Up</button>
-                  </form>
                 </div>
               </div>
             </div>
