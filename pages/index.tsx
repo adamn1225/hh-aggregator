@@ -60,12 +60,16 @@ export default function Home() {
                     if (error) {
                       console.error('Error logging out:', error.message);
                       alert('Failed to log out. Please try again.');
+                      // Optionally, redirect to login page
+                      window.location.href = '/login';
                     } else {
                       window.location.reload(); // Reload the page to clear session state
                     }
                   } catch (err) {
                     console.error('Unexpected error during logout:', err);
                     alert('An unexpected error occurred. Please try again.');
+                    // Optionally, redirect to login page
+                    window.location.href = '/login';
                   }
                 }}
               >
