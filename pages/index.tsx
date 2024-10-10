@@ -47,25 +47,31 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div
-            className="w-full h-full flex flex-col justify-center items-center p-4"
-            style={{ minWidth: 250, maxWidth: 600, margin: 'auto' }}
-          >
-            <TodoList session={session} />
-            <button
-              className="btn-black w-full mt-12"
-              onClick={async () => {
-                const { error } = await supabase.auth.signOut()
-                if (error) {
-                  console.log('Error logging out:', error.message)
-                } else {
-                  window.location.reload() // Reload the page to clear session state
-                }
-              }}
+            <div
+              className="w-full h-full flex flex-col justify-center items-center p-4"
+              style={{ minWidth: 250, maxWidth: 600, margin: 'auto' }}
             >
-              Logout
-            </button>
-          </div>
+              <TodoList session={session} />
+              <button
+                className="btn-black w-full mt-12"
+                onClick={async () => {
+                  try {
+                    const { error } = await supabase.auth.signOut();
+                    if (error) {
+                      console.error('Error logging out:', error.message);
+                      alert('Failed to log out. Please try again.');
+                    } else {
+                      window.location.reload(); // Reload the page to clear session state
+                    }
+                  } catch (err) {
+                    console.error('Unexpected error during logout:', err);
+                    alert('An unexpected error occurred. Please try again.');
+                  }
+                }}
+              >
+                Logout
+              </button>
+            </div>
         )}
       </div>
     </>
