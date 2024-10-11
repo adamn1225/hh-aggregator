@@ -16,7 +16,10 @@ export interface Database {
           is_complete: boolean | null
           task: string | null
           user_id: string
-          due_date: string | null // Add due_date here
+          due_date: string | null
+          app_url: string | null
+          in_progress: boolean | null // Add in_progress here
+          reminder_time: string | null // Add reminder_time here
         }
         Insert: {
           id?: number
@@ -24,7 +27,10 @@ export interface Database {
           is_complete?: boolean | null
           task?: string | null
           user_id: string
-          due_date?: string | null // Add due_date here
+          due_date?: string | null
+          app_url?: string | null
+          in_progress?: boolean | null // Add in_progress here
+          reminder_time?: string | null // Add reminder_time here
         }
         Update: {
           id?: number
@@ -32,7 +38,10 @@ export interface Database {
           is_complete?: boolean | null
           task?: string | null
           user_id?: string
-          due_date?: string | null // Add due_date here
+          due_date?: string | null
+          app_url?: string | null
+          in_progress?: boolean | null // Add in_progress here
+          reminder_time?: string | null // Add reminder_time here
         }
       }
     }
@@ -50,3 +59,6 @@ export interface Database {
     }
   }
 }
+
+// Define the Task type
+export type Task = Database['public']['Tables']['todos']['Row'];
