@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
 import TodoList from '@/components/TodoList';
+import GoalSetting from '@/components/GoalSetting';
 import Layout from './components/Layout'; // Import the original Layout component
 import UserLayout from './components/UserLayout'; // Import the UserLayout component
 import { useEffect, useState } from 'react';
@@ -52,6 +53,7 @@ export default function LoginPage() {
                     <div className="w-full flex justify-center items-center p-4">
                         <div className="w-full sm:w-2/3 lg:w-3/4">
                             <TodoList session={session} />
+                            <GoalSetting session={session} />
                         </div>
                     </div>
                 </UserLayout>
