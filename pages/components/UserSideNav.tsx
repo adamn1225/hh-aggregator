@@ -1,5 +1,6 @@
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface SideNavbarProps {
     className?: string;
@@ -30,7 +31,13 @@ const UserSideNav: React.FC<SideNavbarProps> = ({ className }) => {
             <h1 className='text-xl mb-4 self-center'>NTS Noetics</h1>
             <ul className='flex gap-3 flex-col justify-start items-center flex-grow space-y-1 overflow-y-auto'>
                 <li className="w-full flex flex-col items-center gap-1 justify-center m-0">
-                    <img src='https://www.gravatar.com/avatar?d=mp&s=100' alt='profile-img' className='rounded-full w-16 h-16' />
+                    <Image
+                        src='https://www.gravatar.com/avatar?d=mp&s=100'
+                        alt='profile-img'
+                        className='rounded-full w-16 h-16'
+                        width={100}
+                        height={100}
+                    />
                     <h3>welcome User</h3>
                 </li>
                 <li className="w-full text-center flex justify-center m-0">
