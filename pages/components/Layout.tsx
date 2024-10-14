@@ -1,20 +1,21 @@
-// components/Layout.tsx
-import { ReactNode } from 'react';
-import TopNavbar from './TopNavbar';
+import React, { ReactNode } from 'react';
 import SideNavbar from './SideNavbar';
+import TopNavbar from './TopNavbar';
 
 interface LayoutProps {
     children: ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <div className="layout grid grid-rows-[auto_1fr] grid-cols-[auto_1fr] h-full">
-            <TopNavbar className="row-span-1 col-span-2" />
-            <SideNavbar className="row-span-2 col-span-1" />
-            <main className="content row-span-2 col-span-1 p-5">
-                {children}
-            </main>
+        <div className="relative flex flex-col h-screen overflow-hidden">
+            <TopNavbar />
+            <div className="flex flex-grow">
+                <SideNavbar />
+                <main className="flex-grow p-4">
+                    {children}
+                </main>
+            </div>
         </div>
     );
 };

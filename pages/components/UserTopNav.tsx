@@ -5,7 +5,7 @@ interface TopNavbarProps {
     className?: string;
 }
 
-const TopNavbar: React.FC<TopNavbarProps> = ({ className }) => {
+const UserTopNavbar: React.FC<TopNavbarProps> = ({ className }) => {
     const supabase = useSupabaseClient();
 
     const handleLogout = async () => {
@@ -38,4 +38,4 @@ const TopNavbar: React.FC<TopNavbarProps> = ({ className }) => {
     );
 };
 
-export default TopNavbar;
+export default UserTopNavbar;
