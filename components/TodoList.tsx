@@ -112,27 +112,27 @@ export default function TodoList({ session }: { session: Session }) {
           /></label>
           <div className='flex flex-col gap-4'>
             <label className='text-slate-900 font-medium'>Task Reminder/Due/Goal Date
-            <input
-              className="rounded w-full p-2 border border-slate-900"
-              type="datetime-local"
-              value={newTaskDate}
-              onChange={(e) => {
-                setErrorText('');
-                setNewTaskDate(e.target.value);
-              }}
+              <input
+                className="rounded w-full p-2 border border-slate-900"
+                type="datetime-local"
+                value={newTaskDate}
+                onChange={(e) => {
+                  setErrorText('');
+                  setNewTaskDate(e.target.value);
+                }}
               /></label>
             <label className='text-slate-900 font-medium'>Which application is this for?
-            <select
-              className="rounded w-full p-2"
-              value={selectedApp}
-              onChange={(e) => setSelectedApp(e.target.value)}
-            >
-              <option value="">Select an app</option>
-              <option value="https://main.truckstop.com/">Truckstop</option>
-              <option value="https://crm.ntsconnect.com/">NTS Connect</option>
-              <option value="https://outlook.office.com/">Outlook</option>
-              <option value="https://express.dat.com/">DAT</option>
-              <option value="Other">Other</option>
+              <select
+                className="rounded w-full p-2"
+                value={selectedApp}
+                onChange={(e) => setSelectedApp(e.target.value)}
+              >
+                <option value="">Select an app</option>
+                <option value="https://main.truckstop.com/">Truckstop</option>
+                <option value="https://crm.ntsconnect.com/">NTS Connect</option>
+                <option value="https://outlook.office.com/">Outlook</option>
+                <option value="https://express.dat.com/">DAT</option>
+                <option value="Other">Other</option>
               </select></label>
             {selectedApp === 'Other' && (
               <input

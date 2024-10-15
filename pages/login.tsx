@@ -75,7 +75,7 @@ export default function LoginPage() {
                                         />
                                     </div>
                                     <div className="mt-4 text-center">
-                                            <p>Don&apos;t have an account?</p>
+                                        <p>Don&apos;t have an account?</p>
                                         <Link href="/" legacyBehavior>
                                             <a className="text-blue-500">Sign Up</a>
                                         </Link>
