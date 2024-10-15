@@ -99,7 +99,7 @@ export default function TodoList({ session }: { session: Session }) {
     <div className="w-full flex flex-row gap-12">
       <div className="w-3/5">
         <h1 className="mb-12 text-2xl">Your Reminders</h1>
-        <h3>Set up tasks, mark them complete or delete. Set up email reminders - you'll get an email once a task is created and the reminder email on the date & time selected.</h3>
+        <h3>Set up tasks, mark them complete or delete. Set up email reminders - you&apos;ll get an email once a task is created and the reminder email on the date & time selected.</h3>
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 my-2">
           <label className='text-slate-900 font-semibold'>Task/Goal<textarea
             className="rounded w-full p-2 border border-slate-900"

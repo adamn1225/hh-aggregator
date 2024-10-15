@@ -18,7 +18,7 @@ export default function HomePage() {
         <p className="text-lg mb-8">Manage your tasks and reminders efficiently.</p>
         <div className="w-full h-full sm:h-auto sm:w-2/5 max-w-sm p-5 bg-white shadow flex flex-col items-center text-base">
           <span className="font-sans text-nowrap text-4xl text-center pb-2 mb-1 border-b mx-1 align-center">
-            Let's Get Organized
+            Let&apos;s Get Organized
           </span>
           <SignUp /> {/* Use the SignUp component */}
           <div className="mt-4 text-center">
