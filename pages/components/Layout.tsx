@@ -8,11 +8,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <div className="relative flex flex-col h-screen overflow-hidden">
+        <div className="layout">
             <TopNavbar />
             <div className="flex flex-grow">
                 <SideNavbar />
-                <main className="flex-grow p-4">
+                <main className="main-content p-4">
                     {children}
                 </main>
             </div>

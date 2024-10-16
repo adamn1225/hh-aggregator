@@ -32,7 +32,7 @@ body,
 #__next {
   height: 100vh;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   /* Ensure no overflow on the body */
 }
 
@@ -43,21 +43,9 @@ h1 {
 }
 
 .layout {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
-}
-
-.main-content {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  height: 100%;
-}
-
-.content {
-  padding: 20px;
-  overflow-y: auto;
 }
 
 .side-navbar {
@@ -68,7 +56,19 @@ h1 {
   color: white;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  /* Ensure no overflow on the side navbar */
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+main {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .side-navbar ul {

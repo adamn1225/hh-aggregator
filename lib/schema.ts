@@ -9,15 +9,23 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      todos: {
+      freight: {
         Row: {
           id: number
           inserted_at: string
           is_complete: boolean | null
-          task: string | null
+          freight_type: string | null
+          make: string | null
+          model: string | null
+          year: string | null
+          pallets: string | null
+          serial_number: string | null
+          dimensions: string | null
+          freight_id: string | null
+          freight_class: string | null
+          status: string | null
           user_id: string
           due_date: string | null
-          app_url: string | null
           in_progress: boolean | null
           reminder_time: string | null
         }
@@ -28,7 +36,6 @@ export interface Database {
           task?: string | null
           user_id: string
           due_date?: string | null
-          app_url?: string | null
           in_progress?: boolean | null
           reminder_time?: string | null
         }
@@ -39,17 +46,21 @@ export interface Database {
           task?: string | null
           user_id?: string
           due_date?: string | null
-          app_url?: string | null
           in_progress?: boolean | null
           reminder_time?: string | null
         }
       },
-      goals: { // Add the goals table here
+      shippingQuotes: {
         Row: {
           id: number
           inserted_at: string
           is_complete: boolean | null
-          goal: string | null
+          origin_city: string | null
+          origin_state: string | null
+          origin_zip: string | null
+          destination_city: string | null
+          destination_state: string | null
+          destination_zip: string | null
           user_id: string
           due_date: string | null
         }
@@ -57,7 +68,12 @@ export interface Database {
           id?: number
           inserted_at?: string
           is_complete?: boolean | null
-          goal?: string | null
+          origin_city?: string | null
+          origin_state?: string | null
+          origin_zip?: string | null
+          destination_city?: string | null
+          destination_state?: string | null
+          destination_zip?: string | null
           user_id: string
           due_date?: string | null
         }
@@ -65,7 +81,12 @@ export interface Database {
           id?: number
           inserted_at?: string
           is_complete?: boolean | null
-          goal?: string | null
+          origin_city?: string | null
+          origin_state?: string | null
+          origin_zip?: string | null
+          destination_city?: string | null
+          destination_state?: string | null
+          destination_zip?: string | null
           user_id?: string
           due_date?: string | null
         }
@@ -87,4 +108,4 @@ export interface Database {
 }
 
 // Define the Task type
-export type Task = Database['public']['Tables']['todos']['Row'];
+export type Task = Database['public']['Tables']['freight']['Row'];
