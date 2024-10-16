@@ -28,7 +28,7 @@ const UserSideNav: React.FC<SideNavbarProps> = ({ className }) => {
 
     return (
         <nav className={`side-navbar bg-slate-700 flex flex-col h-screen z-50 py-6 drop-shadow absolute top-0 left-0 ${className}`}>
-            <h1 className='text-xl mb-4 self-center'>NTS Client Portal</h1>
+            <h1 className='text-xl mb-4 self-center'>NTS Noetics</h1>
             <ul className='flex gap-3 flex-col justify-start items-center flex-grow space-y-1 overflow-y-auto'>
                 <li className="w-full flex flex-col items-center gap-1 justify-center m-0">
                     <Image
