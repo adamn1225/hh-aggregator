@@ -1,34 +1,48 @@
-// components/SignUp.tsx
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
-import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
+import { useState } from 'react';
+import { supabase } from '../../lib/database';
 
 const SignUp = () => {
-    const supabase = useSupabaseClient();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const signUpWithGoogle = async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: 'google',
+    interface SignUpFormProps {
+        email: string;
+        password: string;
+    }
+
+    const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const { error } = await supabase.auth.signUp({
+            email,
+            password,
             options: {
-                redirectTo: process.env.NODE_ENV === 'development'
-                    ? 'http://localhost:3000/auth/callback'
-                    : 'https://supabase-nextjs-todo-list-adamn1225s-projects.vercel.app/auth/callback',
+                emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
             },
         });
 
         if (error) {
-            console.error('Error signing up with Google:', error.message);
+            console.error('Error signing up:', error);
+        } else {
+            console.log('Check your email for the confirmation link.');
         }
     };
 
     return (
-        <div className="mt-4">
-            <button
-                onClick={signUpWithGoogle}
-                className="bg-gray-800 text-white font-semibold px-4 py-2 rounded"
-            >
-                Sign Up
-            </button>
-        </div>
+        <form onSubmit={handleSignUp}>
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+            />
+            <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+            />
+            <button type="submit">Sign Up</button>
+        </form>
     );
 };
 
