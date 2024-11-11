@@ -11,7 +11,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="relative flex flex-col h-screen overflow-hidden">
             <TopNavbar />
             <div className="flex flex-grow">
-                <SideNavbar />
                 <main className="flex-grow p-4">
                     {children}
                 </main>
