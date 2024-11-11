@@ -12,6 +12,7 @@ export type Database = {
       finance_leads: {
         Row: {
           amount_requested: string | null
+          annual_income: string | null
           business_address: string | null
           business_city: string | null
           business_state: string | null
@@ -26,10 +27,12 @@ export type Database = {
           date_business_established: string | null
           fico: string | null
           id: number
+          loan_type: 'business' | 'personal' | null
           revenue_pm: string | null
         }
         Insert: {
           amount_requested?: string | null
+          annual_income?: string | null
           business_address?: string | null
           business_city?: string | null
           business_state?: string | null
@@ -44,10 +47,12 @@ export type Database = {
           date_business_established?: string | null
           fico?: string | null
           id?: number
+          loan_type?: 'business' | 'personal' | null
           revenue_pm?: string | null
         }
         Update: {
           amount_requested?: string | null
+          annual_income?: string | null
           business_address?: string | null
           business_city?: string | null
           business_state?: string | null
@@ -62,6 +67,7 @@ export type Database = {
           date_business_established?: string | null
           fico?: string | null
           id?: number
+          loan_type?: 'business' | 'personal' | null
           revenue_pm?: string | null
         }
         Relationships: []

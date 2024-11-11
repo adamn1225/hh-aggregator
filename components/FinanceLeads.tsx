@@ -16,7 +16,7 @@ export default function FinanceLeads({ session }: { session: Session }) {
         .order('id', { ascending: true });
 
       if (error) console.log('error', error);
-      else setFinLeads(finLeads);
+      else setFinLeads(financeLeads);
     };
 
     fetchFinanceLeads();
@@ -39,6 +39,8 @@ export default function FinanceLeads({ session }: { session: Session }) {
               <th className="border text-sm border-gray-300 px-4 py-2">Amount Requested</th>
               <th className="border text-sm border-gray-300 px-4 py-2">FICO</th>
               <th className="border text-sm border-gray-300 px-4 py-2">Date Established</th>
+              <th className="border text-sm border-gray-300 px-4 py-2">Annual Income</th>
+              <th className="border text-sm border-gray-300 px-4 py-2">Loan Type</th>
             </tr>
           </thead>
           <tbody>
@@ -49,15 +51,19 @@ export default function FinanceLeads({ session }: { session: Session }) {
                 <td className="border text-sm border-gray-300 px-4 py-2">{lead.company_name}</td>
                 <td className="border text-sm border-gray-300 px-4 py-2">{lead.contact_first_name} {lead.contact_last_name}</td>
                 <td className="border text-sm border-gray-300 px-4 py-2">{lead.contact_email} {lead.contact_phone}</td>
-                <td className="border text-sm border-gray-300 px-4 py-2">{lead.business_address} {lead.business_city} {lead.business_state} {lead.business_zip}</td>
+                <td className="border text-sm border-gray-300 px-4 py-2">{lead.business_address}</td>
                 <td className="border text-sm border-gray-300 px-4 py-2">{lead.revenue_pm}</td>
                 <td className="border text-sm border-gray-300 px-4 py-2">{lead.amount_requested}</td>
                 <td className="border text-sm border-gray-300 px-4 py-2">{lead.fico}</td>
                 <td className="border text-sm border-gray-300 px-4 py-2">{lead.date_business_established}</td>
+                <td className="border text-sm border-gray-300 px-4 py-2">{lead.annual_income}</td>
+                <td className="border text-sm border-gray-300 px-4 py-2">{lead.loan_type}</td>
               </tr>
             ))}
             {/* Empty row for appearance */}
             <tr>
+              <td className="border text-sm border-gray-300 px-4 py-2">&nbsp;</td>
+              <td className="border text-sm border-gray-300 px-4 py-2">&nbsp;</td>
               <td className="border text-sm border-gray-300 px-4 py-2">&nbsp;</td>
               <td className="border text-sm border-gray-300 px-4 py-2">&nbsp;</td>
               <td className="border text-sm border-gray-300 px-4 py-2">&nbsp;</td>
