@@ -4,6 +4,7 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 import CustomSignInForm from '@/components/CustomSignInForm';
 import Layout from './components/Layout'; // Import the original Layout component
 import UserLayout from './components/UserLayout'; // Import the UserLayout component
+import FinanceLeads from '@/components/FinanceLeads';
 
 export default function LoginPage() {
     const session = useSession();
@@ -21,7 +22,6 @@ export default function LoginPage() {
                 <UserLayout>
                     <div className="w-full flex justify-center items-center p-4">
                         <div className="w-full sm:w-2/3 lg:w-3/4">
-                            Welcome
                         </div>
                     </div>
                 </UserLayout>

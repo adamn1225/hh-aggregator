@@ -18,6 +18,7 @@
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "autoprefixer": "^10.4.20",
     "body-parser": "^1.20.3",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
@@ -27,6 +28,7 @@
     "next": "^15.0.3",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.15",
+    "postcss": "^8.4.49",
     "quill": "^2.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -37,6 +39,6 @@
     "@types/node-cron": "^3.0.11",
     "@types/nodemailer": "^6.4.16",
     "concurrently": "^7.6.0",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.4.14"
   }
 }
