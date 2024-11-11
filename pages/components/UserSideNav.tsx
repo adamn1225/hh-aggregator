@@ -43,13 +43,13 @@ const UserSideNav: React.FC<SideNavbarProps> = ({ className }) => {
                     <h3 className={`font-medium text-lg text-white ${isOpen ? 'block' : 'hidden'}`}>Welcome!</h3>
                 </li>
                 <li className="w-full text-center flex justify-center m-0">
-                    <Link href="/nationwide-equipment-funding" className="flex items-center gap-2 bg-slate-100 text-slate-900 font-bold px-4 py-1 rounded-sm w-4/5">
+                    <Link href="/nationwide-equipment-funding" className="flex items-center gap-2 bg-slate-100 text-slate-900 text-sm font-bold px-4 py-1 rounded-sm w-4/5">
                         <Home className="w-6 h-6" />
                         <span className={`${isOpen ? 'block' : 'hidden'}`}>Nationwide Equipment Funding</span>
                     </Link>
                 </li>
                 <li className="w-full text-center flex justify-center m-0">
-                    <Link href="/home-moving-leads" className="flex items-center gap-2 bg-slate-100 text-slate-900 font-bold px-4 py-1 rounded-sm w-4/5">
+                    <Link href="/home-moving-leads" className="flex  text-sm items-center gap-2 bg-slate-100 text-slate-900 font-bold px-4 py-1 rounded-sm w-4/5">
                         <Truck className="w-6 h-6" />
                         <span className={`${isOpen ? 'block' : 'hidden'}`}>Home Moving Leads</span>
                     </Link>

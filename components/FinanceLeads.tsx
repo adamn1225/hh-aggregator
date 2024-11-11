@@ -18,7 +18,7 @@ export default function FinanceLeads({ session }: { session: Session }) {
       if (error) console.log('error', error);
       else {
         console.log('Fetched finance leads:', financeLeads);
-        setFinLeads(financeLeads);
+        setFinLeads(() => financeLeads);
       }
     };
 
@@ -29,7 +29,7 @@ export default function FinanceLeads({ session }: { session: Session }) {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Finance Leads</h1>
       <div className="overflow-x-auto">
-        <div className="hidden md:block">
+        <div className="block">
           <table className="min-w-full border-collapse border border-gray-300">
             <thead>
               <tr className="bg-gray-100">
@@ -67,7 +67,7 @@ export default function FinanceLeads({ session }: { session: Session }) {
             </tbody>
           </table>
         </div>
-        <div className="block">
+        <div className="sm:block">
           {finLeads.map((lead) => (
             <div key={lead.id} className="border border-gray-300 mb-4 p-4 rounded-lg">
               <div className="flex flex-col">

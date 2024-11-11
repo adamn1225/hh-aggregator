@@ -1,7 +1,8 @@
 {
-  "name": "nextjs-todo-list",
+  "name": "lead aggregator",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev:css\" \"next dev\"",
     "dev:css": "tailwindcss -w -i ./styles/tailwind.css -o styles/app.css",
@@ -11,14 +12,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "13.1.6",
     "@supabase/auth-helpers-react": "^0.3.1",
     "@supabase/auth-ui-react": "^0.2.8",
     "@supabase/supabase-js": "^2.46.1",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
-    "autoprefixer": "^10.4.20",
     "body-parser": "^1.20.3",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
@@ -28,7 +27,6 @@
     "next": "^15.0.3",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.15",
-    "postcss": "^8.4.49",
     "quill": "^2.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -36,9 +34,17 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.15",
     "@types/node-cron": "^3.0.11",
     "@types/nodemailer": "^6.4.16",
+    "autoprefixer": "^10.4.20",
     "concurrently": "^7.6.0",
+    "postcss": "^8.4.49",
+    "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.1",
     "tailwindcss": "^3.4.14"
   }
 }

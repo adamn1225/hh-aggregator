@@ -607,8 +607,8 @@ video {
   margin-bottom: 2rem;
 }
 
-.ml-32 {
-  margin-left: 8rem;
+.ml-28 {
+  margin-left: 7rem;
 }
 
 .mt-10 {
@@ -621,10 +621,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.ml-28 {
-  margin-left: 7rem;
 }
 
 .block {
@@ -1140,10 +1136,6 @@ h1 {
     display: block;
   }
 
-  .sm\:flex {
-    display: flex;
-  }
-
   .sm\:h-auto {
     height: auto;
   }
@@ -1168,10 +1160,6 @@ h1 {
 
   .md\:block {
     display: block;
-  }
-
-  .md\:hidden {
-    display: none;
   }
 }
 
