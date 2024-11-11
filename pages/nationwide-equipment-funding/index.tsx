@@ -1,8 +1,9 @@
-import react from 'react';
+import React from 'react';
 import { useSession } from '@supabase/auth-helpers-react';
 import FinanceLeads from '@/components/FinanceLeads';
 import UserLayout from '../components/UserLayout';
-const financeLeadsPage = () => {
+
+const FinanceLeadsPage = () => {
     const session = useSession();
 
     if (!session) {
@@ -16,4 +17,4 @@ const financeLeadsPage = () => {
     );
 }
 
-export default financeLeadsPage;
+export default FinanceLeadsPage;
