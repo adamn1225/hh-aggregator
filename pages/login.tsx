@@ -1,44 +1,13 @@
 // pages/login.tsx
 import Head from 'next/head';
-import Link from 'next/link';
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
-import { Auth, ThemeSupa } from '@supabase/auth-ui-react';
-import TodoList from '@/components/TodoList';
-import GoalSetting from '@/components/GoalSetting';
+import CustomSignInForm from '@/components/CustomSignInForm';
 import Layout from './components/Layout'; // Import the original Layout component
 import UserLayout from './components/UserLayout'; // Import the UserLayout component
-import { useEffect, useState } from 'react';
 
 export default function LoginPage() {
     const session = useSession();
     const supabase = useSupabaseClient();
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const refreshSession = async () => {
-            const { data, error } = await supabase.auth.refreshSession();
-            if (error) console.log('Error refreshing session:', error.message);
-        };
-
-        if (session) {
-            refreshSession();
-        }
-    }, [session, supabase]);
-
-    const signInWithGoogle = async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-                redirectTo: process.env.NODE_ENV === 'development'
-                    ? 'http://localhost:3000/auth/callback'
-                    : 'https://supabase-nextjs-todo-list-adamn1225s-projects.vercel.app/auth/callback',
-            },
-        });
-
-        if (error) {
-            console.error('Error signing in with Google:', error.message);
-        }
-    };
 
     return (
         <>
@@ -52,8 +21,7 @@ export default function LoginPage() {
                 <UserLayout>
                     <div className="w-full flex justify-center items-center p-4">
                         <div className="w-full sm:w-2/3 lg:w-3/4">
-                            <TodoList session={session} />
-                            <GoalSetting session={session} />
+                            Welcome
                         </div>
                     </div>
                 </UserLayout>
@@ -64,21 +32,10 @@ export default function LoginPage() {
                             <div className="w-full h-full flex justify-center items-center p-4">
                                 <div className="w-full h-full sm:h-auto sm:w-2/5 max-w-sm p-5 bg-white shadow flex flex-col text-base">
                                     <span className="font-sans text-4xl text-center pb-2 mb-1 border-b mx-4 align-center">
-                                        Sign In
+                                        Lead Aggregator
                                     </span>
                                     <div className="mt-4">
-                                        <Auth
-                                            supabaseClient={supabase}
-                                            providers={['google']} // Add Google as a provider
-                                            appearance={{ theme: ThemeSupa }}
-                                            theme="dark"
-                                        />
-                                    </div>
-                                    <div className="mt-4 text-center">
-                                        <p>Don&apos;t have an account?</p>
-                                        <Link href="/" legacyBehavior>
-                                            <a className="text-blue-500">Sign Up</a>
-                                        </Link>
+                                        <CustomSignInForm />
                                     </div>
                                 </div>
                             </div>

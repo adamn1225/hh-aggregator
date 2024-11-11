@@ -8,23 +8,19 @@ export default function HomePage() {
   return (
     <Layout>
       <Head>
-        <title>NTS Noetics</title>
+        <title>Lead Aggregator</title>
         <meta name="description" content="Welcome to SSTA Reminders & Tasks" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="min-w-full min-h-screen flex flex-col items-center justify-start py-4 bg-gray-50">
-        <h1 className="text-4xl font-bold mb-4">Noetic Organization</h1>
-        <p className="text-lg mb-8">Manage your tasks and reminders efficiently.</p>
+        <h1 className="text-4xl font-bold mb-4">Lead Aggregator</h1>
+        <p className="text-lg mb-8">Manage your leads efficiently.</p>
         <div className="w-full h-full sm:h-auto sm:w-2/5 max-w-sm p-5 bg-white shadow flex flex-col items-center text-base">
-          <span className="font-sans text-nowrap text-4xl text-center pb-2 mb-1 border-b mx-1 align-center">
-            Let&apos;s Get Organized
-          </span>
-          <SignUp /> {/* Use the SignUp component */}
-          <div className="mt-4 text-center">
-            <p>Already have an account?</p>
+
+          <div className="text-center">
             <Link href="/login" legacyBehavior>
-              <a className="text-blue-500">Sign In</a>
+              <a className="text-stone-50 bg-gray-900 py-2 px-3 rounded-sm font-semibold">Sign In</a>
             </Link>
           </div>
         </div>

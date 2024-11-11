@@ -33,25 +33,12 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ className }) => {
                     <h3 className='font-medium text-lg'>Welcome!</h3>
                 </li>
                 <li className="w-full flex flex-col gap-3 items-center justify-center m-0">
-                    <button className="bg-slate-100 text-slate-900 text-nowrap font-bold px-4 py-1 rounded-sm w-4/5">
-                        Create an Account
-                    </button>
-                    <button className="bg-slate-100 text-slate-900 text-nowrap font-bold px-4 py-1 rounded-sm w-4/5">
-                        Log In
-                    </button>
-                </li>
-                <div className='flex gap-3 flex-col w-full pt-12 justify-start items-center flex-grow space-y-1'>
-                    <li className="w-full flex justify-center m-0">
-                        <button className="bg-slate-100 text-slate-900 font-bold px-4 py-1 rounded-sm w-4/5">
-                            Learning Resources
-                        </button>
-                    </li>
-                    <li className="w-full flex justify-center m-0">
+                    <Link href="/login" legacyBehavior>
                         <button className="bg-slate-100 text-slate-900 text-nowrap font-bold px-4 py-1 rounded-sm w-4/5">
-                            Community Forum
+                            Log In
                         </button>
-                    </li>
-                </div>
+                    </Link>
+                </li>
             </ul>
 
             <ul className='flex flex-col justify-end items-center'>

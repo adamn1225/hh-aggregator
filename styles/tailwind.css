@@ -60,16 +60,7 @@ h1 {
   overflow-y: auto;
 }
 
-.side-navbar {
-  width: 250px;
-  height: 100%;
-  background-color: #1a202c;
-  /* Tailwind's bg-gray-900 */
-  color: white;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  /* Ensure no overflow on the side navbar */
-}
+
 
 .side-navbar ul {
   list-style-type: none;
