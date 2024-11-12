@@ -1,4 +1,3 @@
-// pages/_app.tsx
 import { supabase } from '@/lib/initSupabase'
 import '@/styles/app.css'
 import '@/styles/tailwind.css'
